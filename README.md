@@ -160,3 +160,12 @@ If showSlot = false, the slot content is hidden.
 | Access elements passed via slot | Use `this.querySelector()` or `this.querySelectorAll()` inside child component |
 | Show slot content conditionally | Wrap `<slot></slot>` inside `<template lwc:if={condition}>`                    |
 
+
+| Feature                    | `@api` (Props)                    | `slot` (Content Injection)                    |
+| -------------------------- | --------------------------------- | --------------------------------------------- |
+| Pass text/data             | ✅ Yes                             | ❌ Not directly (must wrap it in markup)       |
+| Pass HTML/markup           | ❌ No                              | ✅ Yes                                         |
+| Layout defined by          | Child component                   | Parent component                              |
+| Reusability for complex UI | ❌ Limited                         | ✅ Very high                                   |
+| Example use cases          | Set title, show/hide, button text | Modal content, card layouts, dynamic sections |
+
