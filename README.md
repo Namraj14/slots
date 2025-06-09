@@ -34,3 +34,59 @@
 Output:
 Inside Child:
 This is from Parent Component
+
+
+## 2. Named Slots  
+Used when you want to have multiple content areas inside the child component.
+
+---
+
+### 📦 Child Component (`childComponent.html`)
+```html
+<template>
+  <div class="header">
+    <slot name="header">Default Header</slot>
+  </div>
+  <div class="body">
+    <slot name="body">Default Body</slot>
+  </div>
+  <div class="footer">
+    <slot name="footer">Default Footer</slot>
+  </div>
+</template>
+
+### 📦 Parent Component (`parentComponent.html`)
+```html
+<template>
+  <c-child-component>
+    <h1 slot="header">Custom Header from Parent</h1>
+    <p slot="body">Custom Body Content</p>
+    <p slot="footer">Custom Footer Text</p>
+  </c-child-component>
+</template>
+
+Output:
+Custom Header from Parent  
+Custom Body Content  
+Custom Footer Text
+
+
+## 3. Slot with Fallback Content  
+If the parent doesn’t provide content, the child can show a default.
+
+---
+
+### 📦 Child Component (`childComponent.html`)
+```html
+<template>
+  <slot name="info">No info provided</slot>
+</template>
+
+### 📦 Parent Component (`parentComponent.html`)
+```html
+<template>
+  <c-child-component></c-child-component>
+</template>
+
+Output:
+No info provided
