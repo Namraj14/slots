@@ -135,3 +135,28 @@ The parent passes two <span> elements inside the <c-child> component.
 Inside cChild.js, this.querySelector('span') accesses the first slotted <span>.
 
 The button triggers handleClick(), which alerts the content of the first slotted <span>.
+
+5. Showing Slots Only Sometimes (Conditional Slots)
+Sometimes you want to show slot content only if a condition is true.
+
+How to do it?
+
+Use a <template> with lwc:if:
+
+<template>
+  <template lwc:if={showSlot}>
+    <slot></slot>  <!-- Show slot only if showSlot is true -->
+  </template>
+</template>
+Example:
+
+If showSlot = true, the slot content appears.
+
+If showSlot = false, the slot content is hidden.
+
+
+| Concept                         | How to do it                                                                   |
+| ------------------------------- | ------------------------------------------------------------------------------ |
+| Access elements passed via slot | Use `this.querySelector()` or `this.querySelectorAll()` inside child component |
+| Show slot content conditionally | Wrap `<slot></slot>` inside `<template lwc:if={condition}>`                    |
+
