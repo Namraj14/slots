@@ -90,3 +90,48 @@ If the parent doesn’t provide content, the child can show a default.
 
 Output:
 No info provided
+
+4. Accessing Elements Passed Via Slots
+What is a slot?
+A slot is a special place inside a child component where the parent can put some HTML.
+
+1. Child component: cChild
+cChild.html
+
+<template>
+  <div class="container">
+    <slot></slot>
+  </div>
+  <button onclick={handleClick}>Check Slotted Content</button>
+</template>
+cChild.js
+
+import { LightningElement } from 'lwc';
+
+export default class CChild extends LightningElement {
+    handleClick() {
+        // Access elements passed from parent via slot
+        // Note: use this.querySelector, NOT this.template.querySelector
+        const slottedSpan = this.querySelector('span');
+        if (slottedSpan) {
+            alert('First slotted <span> content: ' + slottedSpan.textContent);
+        } else {
+            alert('No <span> element found in slot.');
+        }
+    }
+}
+2. Parent component: cParent
+cParent.html
+
+<template>
+  <c-child>
+    <span>Hello!</span>
+    <span>How are you?</span>
+  </c-child>
+</template>
+Explanation:
+The parent passes two <span> elements inside the <c-child> component.
+
+Inside cChild.js, this.querySelector('span') accesses the first slotted <span>.
+
+The button triggers handleClick(), which alerts the content of the first slotted <span>.
