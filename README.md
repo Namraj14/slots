@@ -36,7 +36,7 @@ Inside Child:
 This is from Parent Component
 
 
-### 2. Named Slots  
+## 2. Named Slots  
 Used when you want to have multiple content areas inside the child component.
 
 ---
